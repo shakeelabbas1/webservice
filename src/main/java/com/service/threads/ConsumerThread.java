@@ -7,6 +7,13 @@ import com.service.redis.rmq.Callback;
 import com.service.redis.rmq.Consumer;
 import com.service.repo.PayloadRepo;
 
+/**
+ * Thread to consume messages saved in Redis and eventually add to Database
+ * configured
+ * 
+ * @author shakeel
+ *
+ */
 public class ConsumerThread extends Thread {
 	private Consumer consumer;
 	private PayloadRepo repo;

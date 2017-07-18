@@ -5,6 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Corresponding class for payload table
+ * 
+ * @author shakeel
+ *
+ */
 @Entity
 @Table(name = "payload")
 public class Payload {
@@ -14,6 +20,9 @@ public class Payload {
 	@Column(name = "data", columnDefinition = "text")
 	private String payloadText;
 
+	/**
+	 * Protected to be use by JPA
+	 */
 	protected Payload() {
 	};
 
