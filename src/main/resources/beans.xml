@@ -12,4 +12,9 @@
 		<constructor-arg type="redis.clients.jedis.Jedis" ref="jedis"></constructor-arg>
 		<constructor-arg type="java.lang.String" value="queue"></constructor-arg>
 	</bean>
+	<bean id="consumer" class="com.service.redis.rmq.Consumer" scope="prototype">
+		<constructor-arg type="redis.clients.jedis.Jedis" ref="jedis"></constructor-arg>
+		<constructor-arg type="java.lang.String" value="queueConsumer"></constructor-arg>
+		<constructor-arg type="java.lang.String" value="queue"></constructor-arg>
+	</bean>
 </beans>

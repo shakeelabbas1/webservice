@@ -10,11 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.service.pojo.DummyRequest;
 import com.service.pojo.DummyResponse;
-import com.service.redis.rmq.Callback;
-import com.service.redis.rmq.Consumer;
 import com.service.redis.rmq.Producer;
-
-import redis.clients.jedis.Jedis;
 
 @RestController
 @RequestMapping("/myservice")
@@ -42,17 +38,6 @@ public class ServiceRequestController {
 		// Push it to redis queue
 		producer.publish(dummyRequest.getDummyPayload());
 		return dResponse;
-	}
-
-	public static void main(String[] args) {
-		Consumer c = new Consumer(new Jedis("172.17.0.2"), "consumer identifier", "queue");
-		c.consume(new Callback() {
-
-			@Override
-			public void onMessage(String message) {
-				System.out.println(message);
-			}
-		});
 	}
 
 }
