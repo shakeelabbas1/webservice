@@ -10,6 +10,9 @@ package com.service.pojo;
 public class DummyRequest {
 	private String dummyPayload;
 
+	public DummyRequest() {
+	}
+
 	public String getDummyPayload() {
 		return dummyPayload;
 	}

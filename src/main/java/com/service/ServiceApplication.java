@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 
 import com.service.redis.rmq.Consumer;
 import com.service.repo.PayloadRepo;
@@ -18,6 +19,8 @@ public class ServiceApplication {
 	private PayloadRepo repo;
 	@Autowired
 	private Consumer consumer;
+	@Autowired
+	private SimpMessagingTemplate template;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ServiceApplication.class, args);
@@ -26,7 +29,7 @@ public class ServiceApplication {
 
 	@PostConstruct
 	public void postProcessing() {
-		ConsumerThread ct = new ConsumerThread(consumer, repo);
+		ConsumerThread ct = new ConsumerThread(consumer, repo, template);
 		ct.start();
 	}
 

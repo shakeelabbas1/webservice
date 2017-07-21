@@ -9,6 +9,9 @@ package com.service.pojo;
 public class DummyResponse {
 	private String dummyPayloadRecieved;
 
+	public DummyResponse() {
+	}
+
 	public String getDummyPayloadRecieved() {
 		return dummyPayloadRecieved;
 	}
